@@ -28,9 +28,23 @@ cqlsh
 
 describe keyspaces;
 use michael;
-select * from users;
+
+```
+**Note** *The Python worker will auto create these names don't yell at me if they are funny. Also each instance of the python script will create a new keyspace. The goal was to create data with little effort in checking for existing tables/keyspaces.*
+Example handful of keyspaces
+```
+pds@cqlsh> describe keyspaces;
+
+kathy    richard   system_schema  krista              joyce          jeanne
+timothy  cicely    system_auth    brandi              system_traces
+mike     kathleen  michael        cindy               lavonne      
+carolyn  kyla      system         system_distributed  rebecca 
 ```
 
+Now try:
+```
+select * from users;
+```
 Output:
 ```
  user_id                              | credits | name
