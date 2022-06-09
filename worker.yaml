@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-cassandra
+  labels:
+    app: worker-cassandra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-cassandra
+  template:
+    metadata:
+      labels:
+        app: worker-cassandra
+    spec:
+      containers:
+      - env:
+        - name: CASS_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: pds-cass-demo-secret
+              key: CASS_SERVER
+        - name: CASS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: pds-cass-demo-secret
+              key: CASS_USERNAME
+        - name: CASS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pds-cass-demo-secret
+              key: CASS_PASSWORD
+        name: worker-cassandra
+        image: jowings/py-cassandra:0.01
+        imagePullPolicy: Always
+        # command: ["python3"]
+        # args: ["py-cass.py"]
