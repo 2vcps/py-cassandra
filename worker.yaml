@@ -16,11 +16,16 @@ spec:
     spec:
       containers:
       - env:
-        - name: CASS_SERVER
+        - name: CASS_SERVER0
           valueFrom:
             secretKeyRef:
               name: pds-cass-demo-secret
-              key: CASS_SERVER
+              key: CASS_SERVER0
+        - name: CASS_SERVER1
+          valueFrom:
+            secretKeyRef:
+              name: pds-cass-demo-secret
+              key: CASS_SERVER1
         - name: CASS_USERNAME
           valueFrom:
             secretKeyRef:
@@ -32,7 +37,7 @@ spec:
               name: pds-cass-demo-secret
               key: CASS_PASSWORD
         name: worker-cassandra
-        image: jowings/py-cassandra:0.01
+        image: jowings/py-cassandra:0.02
         imagePullPolicy: Always
-        # command: ["python3"]
-        # args: ["py-cass.py"]
+        command: ["python3"]
+        args: ["py-cass.py"]
