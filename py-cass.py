@@ -21,7 +21,7 @@ session.execute("CREATE KEYSPACE %s WITH REPLICATION = { 'class' : 'SimpleStrate
 session.execute('use %s' % (rand_keyspace))
 session.execute('CREATE TABLE users(user_id UUID, name text, credits int, PRIMARY KEY (user_id));')
 
-
+#test
 # rows = session.execute('SELECT name, age, email FROM users')
 
 # for user_row in rows:
