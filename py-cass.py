@@ -3,6 +3,7 @@ from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 import names
 import uuid
+import random
 
 #If you add more server variables in the env-secret.yaml add them here too.
 server0 = os.getenv("CASS_SERVER0")
