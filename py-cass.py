@@ -15,7 +15,7 @@ password = str(os.getenv("CASS_PASSWORD"))
 auth_prov0 = PlainTextAuthProvider(username=username, password=password)
 #If you add more server variables in the env-secret.yaml add them here too. ServerX
 cluster = Cluster([server0, server1], auth_provider=auth_prov0)
-rand_keyspace=names.get_first_name() + random.randint(1,10000)
+rand_keyspace=names.get_first_name() + str(random.randint(1,10000))
 print(rand_keyspace)
 session = cluster.connect()
 session.execute("CREATE KEYSPACE %s WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2 };" % (rand_keyspace))
