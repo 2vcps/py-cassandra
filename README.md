@@ -3,7 +3,7 @@
 ## Testing Cassandra on PDS
 
 Need to Demo a few Kubernetes Pods writing data to a Cassandra Data Service on PDS? Don't want to learn YCSB?
-Great, you are in the right place.
+Great, you are in the right place. :)
 
 1. Deploy a Cassandra data Service on PDS. After the deployment is ready make sure to grab the Nodes names, Username and Password from the Connection link for the Service in PDS.
 
