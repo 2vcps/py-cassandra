@@ -37,7 +37,7 @@ spec:
               name: pds-cass-demo-secret
               key: CASS_PASSWORD
         name: worker-cassandra
-        image: jowings/py-cassandra:0.02
+        image: jowings/py-cassandra:v1.0.1
         imagePullPolicy: Always
         command: ["python3"]
         args: ["py-cass.py"]
