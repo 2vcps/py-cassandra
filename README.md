@@ -7,20 +7,25 @@ Great, you are in the right place. :)
 
 1. Deploy a Cassandra data Service on PDS. After the deployment is ready make sure to grab the Nodes names, Username and Password from the Connection link for the Service in PDS.
 
-2. Clone this repo `git clone git@github.com:2vcps/py-cassandra.git` 
+2. Clone this repo `git clone https://github.com/2vcps/py-cassandra.git` 
 
 3. Edit `env-secret.yaml` to match your environment. You may need to add more server variables if you have many nodes in Cassandra. If you do add more make sure to also edit `worker.yaml` and `py-cass.py`. Then you will have to do a Dockerbuild of your own image.
 
-4. Apply the worker.yaml to create the deployment.
 ```
 kubectl create ns py-cassandra
+kubectl apply -f env-secret.yaml -n py-cassandra
+```
+
+4. Apply the worker.yaml to create the deployment.
+```
 kubectl -n py-cassandra apply -f worker.yaml
 ```
 
-5. Verify your dataservice is working.
+5. Verify your Cassandra dataservice is working and login and see the data in Cassandra. Remember the `name=` will be unique to your deployment the name matches the service name in the PDS UI.
+
 ```
-kubectl -n pds-demo get pod
-kubectl -n pds-demo exec -it <cassandra pod> -- bash
+POD=`kubectl -n pds-demo get pod -l name=cas-jowings-xm26lw | grep Running | awk '{print $1}' | head -1`
+kubectl -n pds-demo exec -it $POD -- bash
 ```
 From the pod:
 ```
